@@ -45,7 +45,6 @@ func SelectAll() ([]User, *sql.Rows) {
 			panic(err)
 		}
 		users = append(users, u)
-		fmt.Println(users)
 	}
 
 	return users, rows

@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	routes.Handle()
+	routes.Init()
 }

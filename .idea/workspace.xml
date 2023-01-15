@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd1ea31e-8bf7-4850-9929-9e41905dd8b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/models/users.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/users.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +56,7 @@
       <recent name="C:\Users\nox\GolandProjects\CRUD" />
     </key>
   </component>
-  <component name="RunManager" selected="HTTP Request.All in rest-api_4">
+  <component name="RunManager" selected="Go Build.RUN">
     <configuration name="RUN" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
       <module name="CRUD" />
       <working_directory value="$PROJECT_DIR$" />
@@ -64,6 +64,25 @@
       <package value="CRUD" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="CRUD" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="CRUD" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="CRUD" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <package value="CRUD" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <configuration name="All in rest-api_1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/rest-api_1.http">
@@ -80,8 +99,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.All in rest-api_4" />
         <item itemvalue="Go Build.RUN" />
+        <item itemvalue="HTTP Request.All in rest-api_4" />
         <item itemvalue="HTTP Request.All in rest-api_3" />
         <item itemvalue="HTTP Request.All in rest-api_2" />
         <item itemvalue="HTTP Request.All in rest-api_1" />
