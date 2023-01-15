@@ -1,3 +1,0 @@
-Пользователь: 3, Vlad, vlad_mail@gmail.com, LoginUser, not_encrypted_password_3 
-Пользователь: 5, Max, max_mail@gmail.com, Ligon, not_encrypted_password_2 
-Пользователь: 6, Vlad, vlad_mail@gmail.com, LoginUser, not_encrypted_password_3 
