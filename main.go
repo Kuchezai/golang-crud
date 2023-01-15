@@ -1,6 +1,8 @@
 package main
 
-import "CRUD/routes"
+import (
+	"CRUD/routes"
+)
 
 func main() {
 	routes.Handle()
