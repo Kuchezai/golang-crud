@@ -10,6 +10,7 @@ READ (SELECT):
 [Image alt](https://github.com/Kuchezai/golang-crud/raw/master/exmpl/sa1.png)
 
 UPDATE:
+
 [Image alt](https://github.com/Kuchezai/golang-crud/raw/master/exmpl/u1.png)
 [Image alt](https://github.com/Kuchezai/golang-crud/raw/master/exmpl/u2.png)
 
