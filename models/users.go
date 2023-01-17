@@ -2,7 +2,7 @@ package models
 
 import (
 	"database/sql"
-	"fmt"
+
 	_ "github.com/lib/pq"
 )
 
@@ -20,17 +20,16 @@ func openConnection() *sql.DB {
 	return db
 }
 
-func Delete(userID int) *sql.DB {
+func Create(login, name, pass, email string) *sql.DB {
 	db := openConnection()
-	result, err := db.Exec("DELETE FROM users WHERE id = $1", userID)
+	_, err := db.Exec("INSERT INTO users (login, name, pass, email) VALUES ($1, $2, $3, $4)", login, name, pass, email)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(result.LastInsertId())
 	return db
 }
 
-func SelectAll() ([]User, *sql.Rows) {
+func SelectAll() ([]User, *sql.DB) {
 	db := openConnection()
 	rows, err := db.Query("SELECT * FROM users")
 	if err != nil {
@@ -47,5 +46,33 @@ func SelectAll() ([]User, *sql.Rows) {
 		users = append(users, u)
 	}
 
-	return users, rows
+	return users, db
+}
+
+func Select(userID int) (User, *sql.DB) {
+	db := openConnection()
+	user := User{}
+	err := db.QueryRow("SELECT * FROM users WHERE id = $1", userID).Scan(&user.Id, &user.Login, &user.Name, &user.Pass, &user.Email)
+	if err != nil {
+		panic(err)
+	}
+	return user, db
+}
+
+func Update(userID, login, name, pass, email string) *sql.DB {
+	db := openConnection()
+	_, err := db.Query("UPDATE users SET login = $2, name = $3, pass = $4, email = $5 WHERE id = $1;", userID, login, name, pass, email)
+	if err != nil {
+		panic(err)
+	}
+	return db
+}
+
+func Delete(userID int) *sql.DB {
+	db := openConnection()
+	_, err := db.Exec("DELETE FROM users WHERE id = $1", userID)
+	if err != nil {
+		panic(err)
+	}
+	return db
 }
