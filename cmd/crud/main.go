@@ -1,7 +1,7 @@
 package main
 
 import (
-	"CRUD/routes"
+	"CRUD/internal/app/routes"
 )
 
 func main() {

@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"CRUD/models"
+	"CRUD/internal/app/models"
 	"fmt"
 	"net/http"
 	"strconv"

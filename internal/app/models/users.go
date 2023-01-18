@@ -4,7 +4,15 @@ import (
 	"database/sql"
 
 	_ "github.com/lib/pq"
+	_ "gopkg.in/yaml.v2"
 )
+
+type DBConnection struct {
+	user     string `yaml:"user"`
+	password string `yaml:"password"`
+	dbname   string `yaml:"dbname"`
+	sslmode  string `yaml:"sslmode"`
+}
 
 type User struct {
 	Id                       int
