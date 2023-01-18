@@ -18,8 +18,12 @@ type Config struct {
 	}
 }
 
+func New() *Config {
+	config := &Config{}
+	return config
+}
 func Load() *Config {
-	configuration := &Config{}
+	configuration := New()
 	cfgFile, err := ioutil.ReadFile("configs/config.yaml")
 	if err != nil {
 		panic(err)
