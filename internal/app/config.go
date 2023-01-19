@@ -1,14 +1,15 @@
 package config
 
 import (
-	"gopkg.in/yaml.v2"
 	"io/ioutil"
+
+	"gopkg.in/yaml.v2"
 )
 
-type Config struct {
+type config struct {
 	Server struct {
 		Host string `yaml:"host"`
-		Port int    `yaml:"port"`
+		Port string `yaml:"port"`
 	}
 	DB struct {
 		User     string `yaml:"user"`
@@ -18,19 +19,24 @@ type Config struct {
 	}
 }
 
-func New() *Config {
-	config := &Config{}
-	return config
+var instantiated *config = nil
+
+func GetConfig() **config {
+	if instantiated == nil {
+		instantiated = load()
+	}
+	return &instantiated
 }
-func Load() *Config {
-	configuration := New()
+
+func load() *config {
+	config := &config{}
 	cfgFile, err := ioutil.ReadFile("configs/config.yaml")
 	if err != nil {
 		panic(err)
 	}
-	err = yaml.Unmarshal(cfgFile, configuration)
+	err = yaml.Unmarshal(cfgFile, config)
 	if err != nil {
 		panic(err)
 	}
-	return configuration
+	return config
 }

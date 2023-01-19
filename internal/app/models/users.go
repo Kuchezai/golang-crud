@@ -1,8 +1,9 @@
 package models
 
 import (
+	config "CRUD/internal/app"
 	"database/sql"
-
+	"fmt"
 	_ "github.com/lib/pq"
 	_ "gopkg.in/yaml.v2"
 )
@@ -13,11 +14,15 @@ type User struct {
 }
 
 func openConnection() *sql.DB {
-	connStr := "user=postgres password=root dbname=CRUDapi sslmode=disable"
+	configuration := config.GetConfig()
+	connStr := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=%s",
+		(*configuration).DB.User, (*configuration).DB.Password, (*configuration).DB.DBbname, (*configuration).DB.SSLmode)
+
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		panic(err)
 	}
+
 	return db
 }
 
