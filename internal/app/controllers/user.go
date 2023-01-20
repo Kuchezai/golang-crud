@@ -3,16 +3,18 @@ package controllers
 import (
 	"CRUD/internal/app/models"
 	"fmt"
+	"html/template"
 	"net/http"
 	"strconv"
 )
 
 func HelloServer(w http.ResponseWriter, r *http.Request) {
-
-	_, err := fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:])
+	data := r.URL.Path[1:]
+	tmpl, err := template.ParseFiles("internal/app/view/users/index.html")
 	if err != nil {
 		panic(err)
 	}
+	tmpl.Execute(w, data)
 
 }
 
