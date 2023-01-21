@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	logger "CRUD/internal/app/logs"
 	"CRUD/internal/app/models"
 	"fmt"
 	"html/template"
@@ -66,10 +67,12 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query()
 	userID, err := strconv.Atoi(query.Get("id"))
 	if err != nil {
+		logger.Error.Println("Incorrect ID")
 		panic(err)
 	}
 	db := models.Delete(userID)
 	defer db.Close()
+
 	fmt.Fprintf(w, "Пользователь успешно удален!")
 }
 
@@ -78,15 +81,17 @@ func ShowUi(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 	tmpl, err := template.ParseFiles("internal/app/view/users/index.gohtml")
 	if err != nil {
+		logger.Error.Println("Error in parsing html-page!")
 		panic(err)
 	}
-	tmpl.Execute(w, users)
 
+	tmpl.Execute(w, users)
 }
 
 func CreateFromUi(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseForm()
 	if err != nil {
+		logger.Error.Println("Error in parsing form")
 		panic(err)
 	}
 	login := r.PostForm.Get("login")

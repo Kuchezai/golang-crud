@@ -1,0 +1,4 @@
+INFO: 2023/01/22 00:36:32 users.go:24: Server start!
+INFO: 2023/01/22 00:45:50 users.go:24: Server start!
+ERROR: 2023/01/22 00:46:24 users.go:35: Create operation SQL : pq: значение не умещается в тип character varying(50)
+
