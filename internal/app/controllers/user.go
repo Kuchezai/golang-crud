@@ -8,16 +8,6 @@ import (
 	"strconv"
 )
 
-func HelloServer(w http.ResponseWriter, r *http.Request) {
-	data := r.URL.Path[1:]
-	tmpl, err := template.ParseFiles("internal/app/view/users/index.html")
-	if err != nil {
-		panic(err)
-	}
-	tmpl.Execute(w, data)
-
-}
-
 func Create(w http.ResponseWriter, r *http.Request) {
 
 	query := r.URL.Query()
@@ -81,4 +71,19 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 	db := models.Delete(userID)
 	defer db.Close()
 	fmt.Fprintf(w, "Пользователь успешно удален!")
+}
+
+func ShowUi(w http.ResponseWriter, r *http.Request) {
+	users, db := models.SelectAll()
+	defer db.Close()
+	tmpl, err := template.ParseFiles("internal/app/view/users/index.gohtml")
+	if err != nil {
+		panic(err)
+	}
+	tmpl.Execute(w, users)
+
+}
+
+func CreateFromUi(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("post request")
 }
