@@ -85,5 +85,16 @@ func ShowUi(w http.ResponseWriter, r *http.Request) {
 }
 
 func CreateFromUi(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("post request")
+	err := r.ParseForm()
+	if err != nil {
+		panic(err)
+	}
+	login := r.PostForm.Get("login")
+	name := r.PostForm.Get("name")
+	pass := r.PostForm.Get("pass")
+	email := r.PostForm.Get("email")
+	db := models.Create(login, name, pass, email)
+	defer db.Close()
+
+	http.Redirect(w, r, r.Header.Get("Referer"), 302)
 }
