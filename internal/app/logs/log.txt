@@ -77,3 +77,6 @@ ERROR: 2023/01/23 20:10:53 users.go:78: Update operation SQL : pq: многоч�
 INFO: 2023/01/23 20:11:20 web.go:29: Server start!
 INFO: 2023/01/23 20:23:11 web.go:31: Server start!
 ERROR: 2023/01/23 20:23:11 web.go:34: Server didn't start!
+INFO: 2023/01/23 20:23:20 web.go:31: Server start!
+INFO: 2023/01/23 20:35:11 web.go:34: Server start!
+ERROR: 2023/01/23 20:35:11 web.go:37: Server didn't start!
