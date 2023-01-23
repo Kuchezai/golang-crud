@@ -30,3 +30,31 @@ ERROR: 2023/01/23 17:32:54 user.go:84: Error in parsing html-page!
 INFO: 2023/01/23 17:34:30 users.go:24: Server start!
 INFO: 2023/01/23 17:41:08 users.go:24: Server start!
 INFO: 2023/01/23 17:41:24 users.go:24: Server start!
+INFO: 2023/01/23 17:51:40 users.go:24: Server start!
+INFO: 2023/01/23 18:16:02 users.go:24: Server start!
+INFO: 2023/01/23 18:21:25 users.go:24: Server start!
+INFO: 2023/01/23 18:25:12 users.go:24: Server start!
+ERROR: 2023/01/23 18:25:18 user.go:112: Error in parsing form
+ERROR: 2023/01/23 18:25:18 user.go:112: Error in parsing form
+ERROR: 2023/01/23 18:25:18 user.go:112: Error in parsing form
+ERROR: 2023/01/23 18:26:40 user.go:112: Error in parsing form
+ERROR: 2023/01/23 18:26:40 user.go:112: Error in parsing form
+ERROR: 2023/01/23 18:26:40 user.go:112: Error in parsing form
+INFO: 2023/01/23 18:27:20 users.go:24: Server start!
+INFO: 2023/01/23 18:33:21 users.go:24: Server start!
+ERROR: 2023/01/23 18:38:37 users.go:54: Incorrect data in SQL : sql: expected 6 destination arguments in Scan, not 5
+INFO: 2023/01/23 18:41:04 users.go:24: Server start!
+ERROR: 2023/01/23 18:41:09 users.go:54: Incorrect data in SQL : sql: Scan error on column index 5, name "img": converting NULL to string is unsupported
+ERROR: 2023/01/23 18:41:11 users.go:54: Incorrect data in SQL : sql: Scan error on column index 5, name "img": converting NULL to string is unsupported
+INFO: 2023/01/23 18:42:48 users.go:24: Server start!
+INFO: 2023/01/23 18:44:16 users.go:24: Server start!
+INFO: 2023/01/23 18:47:53 users.go:24: Server start!
+INFO: 2023/01/23 18:49:56 users.go:24: Server start!
+INFO: 2023/01/23 18:51:25 users.go:24: Server start!
+INFO: 2023/01/23 18:56:58 users.go:24: Server start!
+INFO: 2023/01/23 18:59:33 users.go:24: Server start!
+INFO: 2023/01/23 19:00:57 users.go:24: Server start!
+INFO: 2023/01/23 19:03:13 users.go:24: Server start!
+INFO: 2023/01/23 19:05:16 users.go:24: Server start!
+INFO: 2023/01/23 19:06:15 users.go:24: Server start!
+INFO: 2023/01/23 19:06:46 users.go:24: Server start!

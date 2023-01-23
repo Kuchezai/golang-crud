@@ -3,6 +3,7 @@ package controllers
 import (
 	logger "CRUD/internal/app/logs"
 	"CRUD/internal/app/models"
+	"CRUD/internal/app/service"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -17,7 +18,7 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	pass := query.Get("pass")
 	email := query.Get("email")
 
-	db := models.Create(login, name, pass, email)
+	db := models.Create(login, name, pass, email, "")
 	defer db.Close()
 
 	fmt.Fprintf(w, "Пользователь успешно добавлен!")
@@ -27,7 +28,7 @@ func SelectAll(w http.ResponseWriter, r *http.Request) {
 	users, db := models.SelectAll()
 	defer db.Close()
 	for _, u := range users {
-		_, err := fmt.Fprintf(w, "Пользователь: %s, %s, %s, %s, %s \n", strconv.Itoa(u.Id), u.Name, u.Email, u.Login, u.Pass)
+		_, err := fmt.Fprintf(w, "Пользователь: %s, %s, %s, %s, %s, %s \n", strconv.Itoa(u.Id), u.Name, u.Email, u.Login, u.Pass, u.Img)
 		if err != nil {
 			panic(err)
 		}
@@ -43,7 +44,7 @@ func Select(w http.ResponseWriter, r *http.Request) {
 	user, db := models.Select(userID)
 	defer db.Close()
 
-	_, err = fmt.Fprintf(w, "Запрашиваемый пользователь: %s, %s, %s, %s, %s \n", strconv.Itoa(user.Id), user.Name, user.Email, user.Login, user.Pass)
+	_, err = fmt.Fprintf(w, "Запрашиваемый пользователь: %s, %s, %s, %s, %s, %s \n", strconv.Itoa(user.Id), user.Name, user.Email, user.Login, user.Pass, user.Img)
 	if err != nil {
 		panic(err)
 	}
@@ -57,7 +58,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	pass := query.Get("pass")
 	email := query.Get("email")
 
-	db := models.Update(id, login, name, pass, email)
+	db := models.Update(id, login, name, pass, email, "")
 	defer db.Close()
 
 	fmt.Fprintf(w, "Пользователь успешно добавлен!")
@@ -89,16 +90,21 @@ func ShowUi(w http.ResponseWriter, r *http.Request) {
 }
 
 func CreateFromUi(w http.ResponseWriter, r *http.Request) {
-	err := r.ParseForm()
+	err := r.ParseMultipartForm(0)
 	if err != nil {
 		logger.Error.Println("Error in parsing form")
 		panic(err)
 	}
-	login := r.PostForm.Get("login")
-	name := r.PostForm.Get("name")
-	pass := r.PostForm.Get("pass")
-	email := r.PostForm.Get("email")
-	db := models.Create(login, name, pass, email)
+
+	login := r.FormValue("login")
+	name := r.FormValue("name")
+	pass := r.FormValue("pass")
+	email := r.FormValue("email")
+
+	file, handler, err := r.FormFile("image")
+	img := service.UploadImageFromForm(file, handler)
+
+	db := models.Create(login, name, pass, email, img)
 	defer db.Close()
 
 	http.Redirect(w, r, r.Header.Get("Referer"), 302)
