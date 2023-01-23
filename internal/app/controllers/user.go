@@ -17,8 +17,10 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	name := query.Get("name")
 	pass := query.Get("pass")
 	email := query.Get("email")
+	img := query.Get("img")
+	role := query.Get("role")
 
-	db := models.Create(login, name, pass, email, "")
+	db := models.Create(login, name, pass, email, img, role)
 	defer db.Close()
 
 	fmt.Fprintf(w, "Пользователь успешно добавлен!")
@@ -28,7 +30,7 @@ func SelectAll(w http.ResponseWriter, r *http.Request) {
 	users, db := models.SelectAll()
 	defer db.Close()
 	for _, u := range users {
-		_, err := fmt.Fprintf(w, "Пользователь: %s, %s, %s, %s, %s, %s \n", strconv.Itoa(u.Id), u.Name, u.Email, u.Login, u.Pass, u.Img)
+		_, err := fmt.Fprintf(w, "Пользователь: %s, %s, %s, %s, %s, %s, %s \n", strconv.Itoa(u.Id), u.Name, u.Email, u.Login, u.Pass, u.Img, u.Role)
 		if err != nil {
 			panic(err)
 		}
@@ -44,7 +46,7 @@ func Select(w http.ResponseWriter, r *http.Request) {
 	user, db := models.Select(userID)
 	defer db.Close()
 
-	_, err = fmt.Fprintf(w, "Запрашиваемый пользователь: %s, %s, %s, %s, %s, %s \n", strconv.Itoa(user.Id), user.Name, user.Email, user.Login, user.Pass, user.Img)
+	_, err = fmt.Fprintf(w, "Запрашиваемый пользователь: %s, %s, %s, %s, %s, %s, %s \n", strconv.Itoa(user.Id), user.Name, user.Email, user.Login, user.Pass, user.Img, user.Role)
 	if err != nil {
 		panic(err)
 	}
@@ -57,8 +59,10 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	name := query.Get("name")
 	pass := query.Get("pass")
 	email := query.Get("email")
+	img := query.Get("img")
+	role := query.Get("role")
 
-	db := models.Update(id, login, name, pass, email, "")
+	db := models.Update(id, login, name, pass, email, img, role)
 	defer db.Close()
 
 	fmt.Fprintf(w, "Пользователь успешно добавлен!")
@@ -100,11 +104,12 @@ func CreateFromUi(w http.ResponseWriter, r *http.Request) {
 	name := r.FormValue("name")
 	pass := r.FormValue("pass")
 	email := r.FormValue("email")
+	role := r.FormValue("role")
 
 	file, handler, err := r.FormFile("image")
 	img := service.UploadImageFromForm(file, handler)
 
-	db := models.Create(login, name, pass, email, img)
+	db := models.Create(login, name, pass, email, img, role)
 	defer db.Close()
 
 	http.Redirect(w, r, r.Header.Get("Referer"), 302)

@@ -5,5 +5,7 @@ CREATE TABLE users
     name character varying(50) NOT NULL,
     pass character varying(50) NOT NULL,
     email character varying(50) NOT NULL,
+    img character varying(50) NOT NULL,
+    role character varying(50) NOT NULL,
     PRIMARY KEY (id)
 );

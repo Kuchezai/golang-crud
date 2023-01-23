@@ -10,9 +10,8 @@ import (
 )
 
 type User struct {
-	Id                       int
-	Login, Name, Pass, Email string
-	Img                      any
+	Id                                  int
+	Login, Name, Pass, Email, Role, Img string
 }
 
 func openConnection() *sql.DB {
@@ -29,9 +28,9 @@ func openConnection() *sql.DB {
 	return db
 }
 
-func Create(login, name, pass, email, img string) *sql.DB {
+func Create(login, name, pass, email, img, role string) *sql.DB {
 	db := openConnection()
-	_, err := db.Exec("INSERT INTO users (login, name, pass, email, img) VALUES ($1, $2, $3, $4, $5)", login, name, pass, email, img)
+	_, err := db.Exec("INSERT INTO users (login, name, pass, email, img, role) VALUES ($1, $2, $3, $4, $5, $6)", login, name, pass, email, img, role)
 	if err != nil {
 		logger.Error.Println("Create operation SQL :", err)
 		panic(err)
@@ -50,7 +49,7 @@ func SelectAll() ([]User, *sql.DB) {
 
 	for rows.Next() {
 		u := User{}
-		err := rows.Scan(&u.Id, &u.Login, &u.Name, &u.Pass, &u.Email, &u.Img)
+		err := rows.Scan(&u.Id, &u.Login, &u.Name, &u.Pass, &u.Email, &u.Img, &u.Role)
 		if err != nil {
 			logger.Error.Println("Incorrect data in SQL :", err)
 			panic(err)
@@ -64,7 +63,7 @@ func SelectAll() ([]User, *sql.DB) {
 func Select(userID int) (User, *sql.DB) {
 	db := openConnection()
 	user := User{}
-	err := db.QueryRow("SELECT * FROM users WHERE id = $1", userID).Scan(&user.Id, &user.Login, &user.Name, &user.Pass, &user.Email, &user.Img)
+	err := db.QueryRow("SELECT * FROM users WHERE id = $1", userID).Scan(&user.Id, &user.Login, &user.Name, &user.Pass, &user.Email, &user.Img, &user.Role)
 	if err != nil {
 		logger.Error.Println("Select operation SQL :", err)
 		panic(err)
@@ -72,9 +71,9 @@ func Select(userID int) (User, *sql.DB) {
 	return user, db
 }
 
-func Update(userID, login, name, pass, email, img string) *sql.DB {
+func Update(userID, login, name, pass, email, img, role string) *sql.DB {
 	db := openConnection()
-	_, err := db.Query("UPDATE users SET login = $2, name = $3, pass = $4, email = $5, img = $6 WHERE id = $1;", userID, login, name, pass, email, img)
+	_, err := db.Query("UPDATE users SET login = $2, name = $3, pass = $4, email = $5, img = $6, role = $7  WHERE id = $1;", userID, login, name, pass, email, img, role)
 	if err != nil {
 		logger.Error.Println("Update operation SQL :", err)
 		panic(err)

@@ -58,3 +58,20 @@ INFO: 2023/01/23 19:03:13 users.go:24: Server start!
 INFO: 2023/01/23 19:05:16 users.go:24: Server start!
 INFO: 2023/01/23 19:06:15 users.go:24: Server start!
 INFO: 2023/01/23 19:06:46 users.go:24: Server start!
+INFO: 2023/01/23 19:51:01 web.go:29: Server start!
+INFO: 2023/01/23 20:02:48 web.go:29: Server start!
+ERROR: 2023/01/23 20:02:48 web.go:32: Server didn't start!
+ERROR: 2023/01/23 20:02:56 users.go:55: Incorrect data in SQL : sql: expected 7 destination arguments in Scan, not 6
+INFO: 2023/01/23 20:03:26 web.go:29: Server start!
+ERROR: 2023/01/23 20:03:30 users.go:55: Incorrect data in SQL : sql: Scan error on column index 6, name "role": converting NULL to string is unsupported
+ERROR: 2023/01/23 20:04:38 users.go:55: Incorrect data in SQL : sql: Scan error on column index 6, name "role": converting NULL to string is unsupported
+ERROR: 2023/01/23 20:04:38 users.go:55: Incorrect data in SQL : sql: Scan error on column index 6, name "role": converting NULL to string is unsupported
+ERROR: 2023/01/23 20:06:45 users.go:36: Create operation SQL : pq: INSERT содержит больше целевых столбцов, чем выражений
+ERROR: 2023/01/23 20:06:45 users.go:36: Create operation SQL : pq: INSERT содержит больше целевых столбцов, чем выражений
+INFO: 2023/01/23 20:07:12 web.go:29: Server start!
+ERROR: 2023/01/23 20:07:18 users.go:35: Create operation SQL : pq: INSERT содержит больше целевых столбцов, чем выражений
+INFO: 2023/01/23 20:08:11 web.go:29: Server start!
+INFO: 2023/01/23 20:10:37 web.go:29: Server start!
+ERROR: 2023/01/23 20:10:53 users.go:78: Update operation SQL : pq: многочисленные присвоения одному столбцу "img"
+ERROR: 2023/01/23 20:10:53 users.go:78: Update operation SQL : pq: многочисленные присвоения одному столбцу "img"
+INFO: 2023/01/23 20:11:20 web.go:29: Server start!
