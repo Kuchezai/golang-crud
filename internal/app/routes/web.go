@@ -12,14 +12,19 @@ func Init() {
 	configuration := config.GetConfig()
 
 	m := mux.NewRouter()
+
+	/*----------GET запросы------------*/
 	m.HandleFunc("/users", controllers.SelectAll).Host((*configuration).Server.Host).Methods("GET")
 	m.HandleFunc("/user/create", controllers.Create).Host((*configuration).Server.Host).Methods("GET")
 	m.HandleFunc("/user/update", controllers.Update).Host((*configuration).Server.Host).Methods("GET")
 	m.HandleFunc("/user/delete", controllers.Delete).Host((*configuration).Server.Host).Methods("GET")
 	m.HandleFunc("/user", controllers.Select).Host((*configuration).Server.Host).Methods("GET")
 
-	m.HandleFunc("/user/create/ui", controllers.ShowUi).Host((*configuration).Server.Host).Methods("GET")
+	/*----------POST запросы и GUI------------*/
+	m.HandleFunc("/user/create/ui", controllers.ShowCreate).Host((*configuration).Server.Host).Methods("GET")
 	m.HandleFunc("/user/create", controllers.CreateFromUi).Host((*configuration).Server.Host).Methods("POST")
+
+	m.HandleFunc("/login", controllers.ShowLogin).Host((*configuration).Server.Host).Methods("GET")
 
 	logger.Info.Println("Server start!")
 	err := http.ListenAndServe((*configuration).Server.Port, m)

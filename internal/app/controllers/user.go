@@ -77,7 +77,7 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Пользователь успешно удален!")
 }
 
-func ShowUi(w http.ResponseWriter, r *http.Request) {
+func ShowCreate(w http.ResponseWriter, r *http.Request) {
 	users, db := models.SelectAll()
 	defer db.Close()
 	tmpl, err := template.ParseFiles("internal/app/view/layouts/header.gohtml", "internal/app/view/users/index.gohtml", "internal/app/view/layouts/footer.gohtml")
