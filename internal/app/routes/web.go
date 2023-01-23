@@ -25,6 +25,8 @@ func Init() {
 	m.HandleFunc("/user/create", controllers.CreateFromUi).Host((*configuration).Server.Host).Methods("POST")
 
 	m.HandleFunc("/login", controllers.ShowLogin).Host((*configuration).Server.Host).Methods("GET")
+	m.HandleFunc("/admin", controllers.ShowAdmin).Host((*configuration).Server.Host).Methods("GET")
+	m.HandleFunc("/manager", controllers.ShowManager).Host((*configuration).Server.Host).Methods("GET")
 
 	logger.Info.Println("Server start!")
 	err := http.ListenAndServe((*configuration).Server.Port, m)

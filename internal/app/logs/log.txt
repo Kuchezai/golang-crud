@@ -75,3 +75,5 @@ INFO: 2023/01/23 20:10:37 web.go:29: Server start!
 ERROR: 2023/01/23 20:10:53 users.go:78: Update operation SQL : pq: многочисленные присвоения одному столбцу "img"
 ERROR: 2023/01/23 20:10:53 users.go:78: Update operation SQL : pq: многочисленные присвоения одному столбцу "img"
 INFO: 2023/01/23 20:11:20 web.go:29: Server start!
+INFO: 2023/01/23 20:23:11 web.go:31: Server start!
+ERROR: 2023/01/23 20:23:11 web.go:34: Server didn't start!
