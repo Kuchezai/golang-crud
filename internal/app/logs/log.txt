@@ -2,3 +2,31 @@ INFO: 2023/01/22 00:36:32 users.go:24: Server start!
 INFO: 2023/01/22 00:45:50 users.go:24: Server start!
 ERROR: 2023/01/22 00:46:24 users.go:35: Create operation SQL : pq: значение не умещается в тип character varying(50)
 
+INFO: 2023/01/23 15:46:58 users.go:24: Server start!
+INFO: 2023/01/23 17:30:16 users.go:24: Server start!
+ERROR: 2023/01/23 17:30:31 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:30:31 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:30:32 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:30:33 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:30:33 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:30:33 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:30:38 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:30:38 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:30:38 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:31:08 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:31:08 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:31:08 user.go:84: Error in parsing html-page!
+INFO: 2023/01/23 17:31:25 users.go:24: Server start!
+ERROR: 2023/01/23 17:31:29 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:31:29 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:31:29 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:32:30 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:32:30 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:32:30 user.go:84: Error in parsing html-page!
+INFO: 2023/01/23 17:32:47 users.go:24: Server start!
+ERROR: 2023/01/23 17:32:54 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:32:54 user.go:84: Error in parsing html-page!
+ERROR: 2023/01/23 17:32:54 user.go:84: Error in parsing html-page!
+INFO: 2023/01/23 17:34:30 users.go:24: Server start!
+INFO: 2023/01/23 17:41:08 users.go:24: Server start!
+INFO: 2023/01/23 17:41:24 users.go:24: Server start!

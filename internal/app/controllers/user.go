@@ -79,13 +79,13 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 func ShowUi(w http.ResponseWriter, r *http.Request) {
 	users, db := models.SelectAll()
 	defer db.Close()
-	tmpl, err := template.ParseFiles("internal/app/view/users/index.gohtml")
+	tmpl, err := template.ParseFiles("internal/app/view/layouts/header.gohtml", "internal/app/view/users/index.gohtml", "internal/app/view/layouts/footer.gohtml")
 	if err != nil {
 		logger.Error.Println("Error in parsing html-page!")
 		panic(err)
 	}
 
-	tmpl.Execute(w, users)
+	tmpl.ExecuteTemplate(w, "index", users)
 }
 
 func CreateFromUi(w http.ResponseWriter, r *http.Request) {
