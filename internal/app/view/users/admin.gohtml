@@ -2,7 +2,15 @@
     {{ template "header" }}
     <div style="min-height:calc(100vh - 112px);">
         Это админ
+        <form action="/user/create/ui">
+            <button type="submit" class="btn btn-info">Главная страница</button>
+        </form>
+        <form action="/login">
+            <button type="submit" class="btn btn-warning">Выйти</button>
+        </form>
     </div>
+
+
     {{ template "footer" }}
     </body>
     </html>

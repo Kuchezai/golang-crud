@@ -7,3 +7,5 @@ require (
 	github.com/lib/pq v1.10.7
 	gopkg.in/yaml.v2 v2.4.0
 )
+
+require github.com/golang-jwt/jwt/v4 v4.4.3 // indirect
