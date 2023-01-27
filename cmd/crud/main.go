@@ -4,10 +4,11 @@ import (
 	config "CRUD/internal/app"
 	logger "CRUD/internal/app/logs"
 	"CRUD/internal/app/routes"
+	"fmt"
 )
 
 func main() {
-	config.GetConfig()
+	fmt.Println(*config.GetConfig())
 	logger.Init()
 	routes.Init()
 }

@@ -21,6 +21,9 @@ type config struct {
 	JWT struct {
 		Key string `yaml:"key"`
 	}
+	SSL struct {
+		Port string `yaml:"use80port"`
+	}
 }
 
 var instantiated *config = nil
@@ -42,6 +45,11 @@ func load() *config {
 	err = yaml.Unmarshal(cfgFile, config)
 	if err != nil {
 		panic(err)
+	}
+	if config.SSL.Port == "true" {
+		config.SSL.Port = "80"
+	} else {
+		config.SSL.Port = "443"
 	}
 	return config
 }

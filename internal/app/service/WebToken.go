@@ -41,3 +41,8 @@ func SetTokenInCookies(w http.ResponseWriter, token string) {
 	cookie := &http.Cookie{Name: "token", Value: token, MaxAge: int(ttl) / microsecondInSecond, Secure: true, HttpOnly: true}
 	http.SetCookie(w, cookie)
 }
+
+func UnsetTokenInCookies(w http.ResponseWriter) {
+	cookie := &http.Cookie{Name: "token", Value: "", MaxAge: int(ttl) / microsecondInSecond, Secure: true, HttpOnly: true}
+	http.SetCookie(w, cookie)
+}
