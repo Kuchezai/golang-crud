@@ -11,7 +11,7 @@ jwt:
 ssl:
   use80port: false
 smtp:
-  login: onlysteamart@mail.ru
-  password: Xp8bLsmxQ1kd4zUsRrcr
+  login: dab622@mail.ru
+  password: dGjkTrzfidJhKbv8szAJ
   server: smtp.mail.ru
   port: 587
