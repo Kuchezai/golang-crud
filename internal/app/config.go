@@ -24,6 +24,12 @@ type config struct {
 	SSL struct {
 		Port string `yaml:"use80port"`
 	}
+	SMTP struct {
+		Login    string `yaml:"login"`
+		Password string `yaml:"password"`
+		Server   string `yaml:"server"`
+		Port     string `yaml:"port"`
+	}
 }
 
 var instantiated *config = nil

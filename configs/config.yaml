@@ -4,9 +4,14 @@ server:
 db:
   user: postgres
   password: root
-  dbname: CRUDapi
+  dbname: crud
   sslmode: disable
 jwt:
   key: 4t7w!z%C*F-JaNcRfUjXn2r5u8x/A?D("
 ssl:
   use80port: false
+smtp:
+  login: onlysteamart@mail.ru
+  password: Xp8bLsmxQ1kd4zUsRrcr
+  server: smtp.mail.ru
+  port: 587

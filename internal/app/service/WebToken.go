@@ -10,7 +10,7 @@ import (
 
 var (
 	signingKey          = []byte((*config.GetConfig()).JWT.Key)
-	ttl                 = 1 * time.Minute
+	ttl                 = 2 * time.Minute
 	microsecondInSecond = 1000000000
 )
 
@@ -38,11 +38,11 @@ func CreateTokenWithRole(userRole string) string {
 }
 
 func SetTokenInCookies(w http.ResponseWriter, token string) {
-	cookie := &http.Cookie{Name: "token", Value: token, MaxAge: int(ttl) / microsecondInSecond, Secure: true, HttpOnly: true}
+	cookie := &http.Cookie{Name: "token", Value: token, MaxAge: int(ttl) / microsecondInSecond, HttpOnly: true}
 	http.SetCookie(w, cookie)
 }
 
 func UnsetTokenInCookies(w http.ResponseWriter) {
-	cookie := &http.Cookie{Name: "token", Value: "", MaxAge: int(ttl) / microsecondInSecond, Secure: true, HttpOnly: true}
+	cookie := &http.Cookie{Name: "token", Value: "", MaxAge: int(ttl) / microsecondInSecond, HttpOnly: true}
 	http.SetCookie(w, cookie)
 }

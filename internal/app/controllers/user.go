@@ -19,8 +19,14 @@ func Create(w http.ResponseWriter, r *http.Request) {
 	email := query.Get("email")
 	img := query.Get("img")
 	role := query.Get("role")
+	verif := query.Get("verif")
+	verifStr, err := strconv.ParseBool(verif)
+	if err != nil {
+		logger.Error.Println("Parse request ", err)
+		panic(err)
+	}
 
-	db := models.Create(login, name, pass, email, img, role)
+	db := models.Create(login, name, pass, email, img, role, verifStr)
 	defer db.Close()
 
 	fmt.Fprintf(w, "Пользователь успешно добавлен!")
@@ -61,8 +67,14 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	email := query.Get("email")
 	img := query.Get("img")
 	role := query.Get("role")
+	verif := query.Get("verif")
+	verifStr, err := strconv.ParseBool(verif)
+	if err != nil {
+		logger.Error.Println("Parse request ", err)
+		panic(err)
+	}
 
-	db := models.Update(id, login, name, pass, email, img, role)
+	db := models.Update(id, login, name, pass, email, img, role, verifStr)
 	defer db.Close()
 
 	fmt.Fprintf(w, "Пользователь успешно добавлен!")
@@ -89,11 +101,10 @@ func ShowCreate(w http.ResponseWriter, r *http.Request) {
 		logger.Error.Println("Error in parsing html-page!")
 		panic(err)
 	}
-
 	tmpl.ExecuteTemplate(w, "create", users)
 }
 
-func CreateFromUi(w http.ResponseWriter, r *http.Request) {
+func CreateUser(w http.ResponseWriter, r *http.Request) {
 	err := r.ParseMultipartForm(0)
 	if err != nil {
 		logger.Error.Println("Error in parsing form")
@@ -109,8 +120,11 @@ func CreateFromUi(w http.ResponseWriter, r *http.Request) {
 	file, handler, err := r.FormFile("image")
 	img := service.UploadImageFromForm(file, handler)
 
-	db := models.Create(login, name, pass, email, img, role)
+	db := models.Create(login, name, pass, email, img, role, false)
 	defer db.Close()
+
+	mailer := service.NewMailer()
+	mailer.SendVerificationMail(email)
 
 	http.Redirect(w, r, r.Header.Get("Referer"), 302)
 }

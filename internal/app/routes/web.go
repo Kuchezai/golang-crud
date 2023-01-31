@@ -29,7 +29,8 @@ func Init() {
 	/*----------AUTH AND ADMIN------------*/
 	m.Handle("/admin", middleware.IsAdmin(http.HandlerFunc(controllers.ShowAdmin))).Methods("GET")
 	m.Handle("/user/create/ui", middleware.IsAdmin(http.HandlerFunc(controllers.ShowCreate))).Methods("GET")
-	m.Handle("/user/create", middleware.IsAdmin(http.HandlerFunc(controllers.CreateFromUi))).Methods("POST")
+	m.Handle("/user/create", middleware.IsAdmin(http.HandlerFunc(controllers.CreateUser))).Methods("POST")
+	m.HandleFunc("/verification", controllers.Verification).Host((*configuration).Server.Host).Methods("GET")
 
 	/*----------Errors------------*/
 	m.HandleFunc("/404", controllers.Error404).Host((*configuration).Server.Host).Methods("GET")
