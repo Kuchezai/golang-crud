@@ -41,4 +41,19 @@ internal\app\controllers\user.go CreateFromUi()
 
 internal\app\logs
 
+    6. Middleware admin:
+
+internal\app\middleware
+
+    7. JSON Web Token:
+
+internal\app\service\WebToken.go
+
+    8. Верификация пользователя через email:
+
+internal\app\service\EmailSender.go
+
+    9. Миграции БД
+
+internal\app\db\migration
 
