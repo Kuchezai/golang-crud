@@ -4,6 +4,7 @@ import (
 	logger "CRUD/internal/app/logs"
 	"CRUD/internal/app/models"
 	"CRUD/internal/app/service"
+	smtp "CRUD/internal/smtp"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -123,8 +124,41 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 	db := models.Create(login, name, pass, email, img, role, false)
 	defer db.Close()
 
-	mailer := service.NewMailer()
+	mailer := smtp.NewMailer()
 	mailer.SendVerificationMail(email)
 
 	http.Redirect(w, r, r.Header.Get("Referer"), 302)
+}
+
+func ShowLogin(w http.ResponseWriter, r *http.Request) {
+
+	tmpl, err := template.ParseFiles("internal/app/view/layouts/header.gohtml", "internal/app/view/auth/login.gohtml", "internal/app/view/layouts/footer.gohtml")
+	if err != nil {
+		logger.Error.Println("Error in parsing html-page!")
+		panic(err)
+	}
+
+	tmpl.ExecuteTemplate(w, "login", nil)
+}
+
+func ShowAdmin(w http.ResponseWriter, r *http.Request) {
+
+	tmpl, err := template.ParseFiles("internal/app/view/layouts/header.gohtml", "internal/app/view/users/admin.gohtml", "internal/app/view/layouts/footer.gohtml")
+	if err != nil {
+		logger.Error.Println("Error in parsing html-page!")
+		panic(err)
+	}
+
+	tmpl.ExecuteTemplate(w, "login", nil)
+}
+
+func ShowManager(w http.ResponseWriter, r *http.Request) {
+
+	tmpl, err := template.ParseFiles("internal/app/view/layouts/header.gohtml", "internal/app/view/users/manager.gohtml", "internal/app/view/layouts/footer.gohtml")
+	if err != nil {
+		logger.Error.Println("Error in parsing html-page!")
+		panic(err)
+	}
+
+	tmpl.ExecuteTemplate(w, "login", nil)
 }

@@ -244,3 +244,21 @@ INFO: 2023/02/01 02:02:52 web.go:38: Server start!
 INFO: 2023/02/01 02:11:14 web.go:38: Server start!
 INFO: 2023/02/01 02:15:39 web.go:38: Server start!
 INFO: 2023/02/01 02:17:46 web.go:38: Server start!
+INFO: 2023/02/02 10:38:57 web.go:39: Server start!
+ERROR: 2023/02/02 10:42:54 userModel.go:36: Create operation SQL : pq: столбец "smtp" в таблице "users" не существует
+INFO: 2023/02/02 10:44:11 web.go:39: Server start!
+ERROR: 2023/02/02 10:44:37 adminMiddleware.go:15: Error occurred while reading cookie
+ERROR: 2023/02/02 10:46:46 EmailSender.go:37: Send smtp:  501 <>: missing or malformed local part
+INFO: 2023/02/02 10:55:17 web.go:39: Server start!
+ERROR: 2023/02/02 10:55:29 adminMiddleware.go:15: Error occurred while reading cookie
+ERROR: 2023/02/02 10:57:48 adminMiddleware.go:15: Error occurred while reading cookie
+INFO: 2023/02/02 11:01:17 web.go:39: Server start!
+ERROR: 2023/02/02 11:01:56 adminMiddleware.go:15: Error occurred while reading cookie
+INFO: 2023/02/02 11:03:40 web.go:39: Server start!
+ERROR: 2023/02/02 11:04:25 authController.go:14: Error in parsing form
+ERROR: 2023/02/02 11:04:25 authController.go:14: Error in parsing form
+ERROR: 2023/02/02 11:04:26 authController.go:14: Error in parsing form
+ERROR: 2023/02/02 11:04:31 authController.go:14: Error in parsing form
+ERROR: 2023/02/02 11:05:01 authController.go:14: Error in parsing form
+INFO: 2023/02/02 11:05:12 web.go:39: Server start!
+ERROR: 2023/02/02 11:05:43 adminMiddleware.go:15: Error occurred while reading cookie

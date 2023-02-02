@@ -1,8 +1,9 @@
-package service
+package smtp
 
 import (
 	config "CRUD/internal/app"
 	logger "CRUD/internal/app/logs"
+	auth2 "CRUD/internal/auth/services"
 	"net/smtp"
 )
 
@@ -26,14 +27,14 @@ func (m *mailer) SendVerificationMail(email string) {
 
 	subject := "Subject: Youdomen email verification\n"
 	body := "Чтобы подтвердить почту перейдите по ссылке: "
-	hash := GetMD5Hash(email)
+	hash := auth2.GetMD5Hash(email)
 	link := "http://" + (*configuration).Server.Host + "/verification?email=" + email + "&sign=" + hash
 	message := []byte(subject + body + link)
 
 	auth := smtp.PlainAuth("", m.login, m.password, m.server)
 	err := smtp.SendMail(address, auth, m.login, []string{email}, message)
 	if err != nil {
-		logger.Error.Println("Send email: ", err)
+		logger.Error.Println("Send mail: ", err)
 		panic(err)
 	}
 }
