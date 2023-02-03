@@ -47,13 +47,16 @@ internal\app\middleware
 
     7. JSON Web Token:
 
-internal\app\service\WebToken.go
+internal\auth
 
     8. Верификация пользователя через email:
 
-internal\app\service\EmailSender.go
+internal\smtp\EmailSender.go
 
     9. Миграции БД
 
 internal\app\db\migration
 
+    10. Загрузка изображений на сервер
+
+internal\app\service\ImageUploader.go

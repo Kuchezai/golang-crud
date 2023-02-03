@@ -1,6 +1,7 @@
 package main
 
 import (
+	config "CRUD/internal/app"
 	"flag"
 	"fmt"
 	"os"
@@ -25,11 +26,11 @@ Usage:
 func main() {
 	flag.Usage = usage
 	flag.Parse()
-
+	configuration := config.GetConfig()
 	db := pg.Connect(&pg.Options{
-		User:     "postgres",
-		Database: "crud",
-		Password: "root",
+		User:     (*configuration).DB.User,
+		Database: (*configuration).DB.DBbname,
+		Password: (*configuration).DB.Password,
 	})
 	oldVersion, newVersion, err := migrations.Run(db, flag.Args()...)
 	if err != nil {
